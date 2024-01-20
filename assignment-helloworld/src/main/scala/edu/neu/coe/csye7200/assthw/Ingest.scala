@@ -38,6 +38,8 @@ object Ingest extends App {
   //for (m <- ingester(source)) println(m.properties.mkString(", "))
   val kiwiMovies = for (m <- ingester(source); if (m.properties(20)=="New Zealand")) yield m
   println(kiwiMovies.size)
+
+  //close the source
   source.close()
 
   // Please note that an alternative to the definition of source above would be as in the following comment:
