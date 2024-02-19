@@ -1,7 +1,7 @@
 package edu.neu.coe.csye7200.prime
 
-import com.typesafe.scalalogging.Logger
-import edu.neu.coe.csye7200.prime.Prime.{logger, primes}
+//import com.typesafe.scalalogging.Logger
+import edu.neu.coe.csye7200.prime.Prime.{primes}
 
 case class Prime(x: BigInt, var valid: Option[Boolean]) {
 
@@ -36,7 +36,7 @@ case class Prime(x: BigInt, var valid: Option[Boolean]) {
     val isPrime = x == BigInt(2) || x == BigInt(3) || !composite
     valid match {
       case None =>
-        logger.whenDebugEnabled(if (isPrime) logger.debug(s"$x is prime"))
+        //logger.whenDebugEnabled(if (isPrime) logger.debug(s"$x is prime"))
         valid = Some(isPrime)
       case _ =>
     }
@@ -46,7 +46,7 @@ case class Prime(x: BigInt, var valid: Option[Boolean]) {
 
 object Prime {
 
-  val logger: Logger = com.typesafe.scalalogging.Logger(classOf[Prime])
+  //val logger: Logger = com.typesafe.scalalogging.Logger(classOf[Prime])
 
   def apply(x: BigInt): Prime = new Prime(x, None)
 

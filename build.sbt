@@ -45,3 +45,4 @@ lazy val root = (project in file(".")).aggregate(assthw, asstmd, asstrs, asstfc,
 Test / parallelExecution := false
 
 javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")
+

@@ -40,8 +40,8 @@ trait RandomState[T] {
   // 10 points
   def flatMap[U](f: T => RandomState[U]): RandomState[U] = {
 // TO BE IMPLEMENTED 
+    f(get)
 
-???
   }
 
   /**
@@ -50,9 +50,10 @@ trait RandomState[T] {
   // Hint: This a recursively method and it concatenate current element with following elements.
   // 12 points
   def toStream: LazyList[T] = {
-// TO BE IMPLEMENTED 
+// TO BE IMPLEMENTED
+    //cons combines the first value, and the remaining lazy list
+    LazyList.cons(get, next.toStream)
 
-???
   }
 }
 
@@ -69,7 +70,7 @@ case class JavaRandomState[T](n: Long, g: Long => T) extends RandomState[T] {
   def next: RandomState[T] = {
 // TO BE IMPLEMENTED 
 
-???
+    JavaRandomState(new Random(n).nextLong(), g)
   }
 
   /*END*/
@@ -78,7 +79,7 @@ case class JavaRandomState[T](n: Long, g: Long => T) extends RandomState[T] {
   def get: T = {
 // TO BE IMPLEMENTED 
 
-???
+    g(n)
   }
 
   /*END*/
@@ -87,7 +88,7 @@ case class JavaRandomState[T](n: Long, g: Long => T) extends RandomState[T] {
   def map[U](f: T => U): RandomState[U] = {
 // TO BE IMPLEMENTED 
 
-???
+    JavaRandomState(n, g andThen f)
   }
 }
 
@@ -120,8 +121,8 @@ object RandomState {
   // 4 points
   val longToDouble: Long => Double =
 // TO BE IMPLEMENTED 
+    n => ((n.toDouble - Long.MinValue) / (Long.MaxValue.toDouble - Long.MinValue.toDouble)) * 2 - 1
 
-???
   val doubleToUniformDouble: Double => UniformDouble = { x => UniformDouble((x + 1) / 2) }
 }
 
