@@ -150,7 +150,7 @@ object WebCrawler extends App {
 
 
 // STUB
- ???
+            (ns \\ "a").flatMap(a => a.attribute("href")).flatMap(_.map(_.text)).map(href => validateURL(createURL(Some(url), href).get)).toSeq
 // END SOLUTION
 
         def getLinks(g: String): Try[Seq[URL]] = {
@@ -163,7 +163,10 @@ object WebCrawler extends App {
 // TO BE IMPLEMENTED 
 
         // STUB
-         ???
+        for {
+            content <- getURLContent(url)
+            links <- MonadOps.asFuture(getLinks(content))
+        } yield links
         // END SOLUTION
     }
 

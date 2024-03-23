@@ -218,8 +218,8 @@ class MonadOpsSpec extends flatspec.AnyFlatSpec with should.Matchers with Future
 
 
     behavior of "sequenceImpatient"
-    val goodURL = "https://www1.coe.neu.edu/~rhillyard/indexSafe.html"
-    val badURL = "https://www1.coe.neu.edu/junk"
+    val goodURL = "http://www1.coe.neu.edu/~rhillyard/indexSafe.html"
+    val badURL = "http://www1.coe.neu.edu/junk"
 
     it should "work for 1" in {
         whenReady(sequenceImpatient(Seq(Future(1)))(100)) {
